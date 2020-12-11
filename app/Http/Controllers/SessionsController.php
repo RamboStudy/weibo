@@ -21,7 +21,7 @@ class SessionsController extends Controller
         ]);
 
         // 用户验证 该用户存在于数据库，且邮箱和密码相符合
-        if (Auth::attempt($credentials,$request->has(remember))){
+        if (Auth::attempt($credentials,$request->has('remember'))){
             //登录成功的相关操作
             session()->flash('success','欢迎回来！');
             return redirect()->route('users.show',[Auth::user()]);
