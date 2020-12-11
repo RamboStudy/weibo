@@ -13,12 +13,13 @@ class SessionsController extends Controller
         return view('sessions.create');
     }
 
-    public  function store(Request $request){
+    public function store(Request $request){
         $credentials = $this->validate($request,[
             'email'=>'required|email|max:255',
             'password'=>'required'
         ]);
 
+        // 用户验证 该用户存在于数据库，且邮箱和密码相符合
         if (Auth::attempt($credentials)){
             //登录成功的相关操作
             session()->flash('success','欢迎回来！');
